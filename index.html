@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header Section -->
+        <header class="app-header">
+            <div class="header-content">
+                <div>
+                    <h1 class="app-title">Habits</h1>
+                    <p class="current-date" id="current-date">Loading date...</p>
+                </div>
+                <div class="header-actions" style="display: flex; align-items: flex-end; gap: 2rem; flex-wrap: wrap;">
+                    <div class="progress-container">
+                        <div class="progress-text">
+                            <span id="progress-percent">0%</span> Completed Today
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+                        </div>
+                    </div>
+                    <a href="https://mahmoudhmahmoud.github.io" target="_blank" rel="noopener noreferrer" class="btn btn-text btn-nav">
+                        My CV
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Section -->
+        <main class="app-main">
+            <!-- Habit List -->
+            <div class="habit-list" id="habit-list">
+                <!-- Habits will be rendered here dynamically -->
+            </div>
+            
+            <!-- Empty State -->
+            <div class="empty-state hidden" id="empty-state">
+                <div class="empty-icon">🌱</div>
+                <h2>No habits yet</h2>
+                <p>Start small and build your routine. Add your first habit to begin tracking.</p>
+                <button class="btn btn-primary" id="empty-state-add-btn">Create Habit</button>
+            </div>
+        </main>
+
+        <!-- Floating Action Button -->
+        <button class="fab" id="fab-add-habit" aria-label="Add Habit">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+        </button>
+
+        <!-- Habit Modal (Add/Edit) -->
+        <div class="modal-overlay hidden" id="habit-modal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 id="modal-title">New Habit</h2>
+                    <button class="icon-btn close-modal" id="close-modal-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <form id="habit-form" class="modal-body">
+                    <input type="hidden" id="habit-id">
+                    <div class="form-group">
+                        <label for="habit-name">Name</label>
+                        <input type="text" id="habit-name" placeholder="e.g., Drink water, Read 10 pages" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="habit-category">Category</label>
+                        <div class="custom-select-wrapper">
+                            <select id="habit-category" required>
+                                <option value="health">Health & Fitness</option>
+                                <option value="productivity">Productivity</option>
+                                <option value="learning">Learning</option>
+                                <option value="mindfulness">Mindfulness</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="select-arrow"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary hidden" id="delete-habit-btn">Delete</button>
+                        <div class="footer-actions">
+                            <button type="button" class="btn btn-text" id="cancel-modal-btn">Cancel</button>
+                            <button type="submit" class="btn btn-primary" id="save-habit-btn">Save Habit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Toast Notification -->
+        <div class="toast-container" id="toast-container"></div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="app-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Mahmoud Hamdy Mahmoud</p>
+            <div class="footer-links">
+                <a href="tel:+201120528381" class="footer-link">📞 +20 112 052 8381</a>
+                <a href="mailto:mahmoud.h.abdelrahman@outlook.com" class="footer-link">✉️ Email</a>
+                <a href="https://linkedin.com/in/mahmoudhamdymahmoud" target="_blank" rel="noopener noreferrer" class="footer-link">🔗 LinkedIn</a>
+                <a href="https://mahmoudhmahmoud.github.io" target="_blank" rel="noopener noreferrer" class="footer-link">📄 Digital CV</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
